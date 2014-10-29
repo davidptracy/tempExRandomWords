@@ -8,24 +8,14 @@
 
 		<style>
 
-			body {
-				width: 1024px;
+			body {			
+				width: 100%;
 				font-family: Arial, Verdana, sans-serif;
-			}
-		
+			}	
 
 			.gameColumn {
 				float: left;
-				width: 22%;
-				margin: 5px;
-				padding: 5px;
-			}
-
-			.infoColumn {
-				float: left;
-				width: 30%;
-				margin: 5px;
-				padding: 5px;
+				width: 23%;
 			}
 
 		</style>
@@ -36,10 +26,10 @@
 			// =================== GLOBAL VARIABLES =======================
 			// ============================================================
 
-			var toolArray = ['Growth Economy','World in Decay','Medieval Times', '1980s Mall', 'Hell', 'Fragglerock', 'Television Sitcom', 'In the Present', '5 years from now', 'Waterworld'];
-			var methodArray = ['Education', 'Health', 'Geology', 'Military', 'Self Help', 'Advertising', 'Mass Entertainment', 'Extreme Luxury', 'Agricultural', 'Spectator Sports', 'Hobbies', 'Five Star Dining', 'Natural Births'];
-			var futureArray = ['Children','Pilgrims','Travelers', 'Old People', 'Farmers', 'Hipsters', 'New Parents', 'Women', 'Criminal', 'Hermit', 'Livestock', 'Megafauna', 'Trees', 'Companion Animals', 'Service Animals', 'Musicians', 'Celebrities'];
-			var purposeArray = ['Uplifting', 'Erotic', 'Devastating', 'Destructive', 'Playful', 'Revolutionary', 'Secretive', 'Subtle', 'Improving', 'Degrading', 'Transformative', 'Humorous', 'Satirical', 'Prejudice'];
+			var settingArray = ['Growth Economy','World in Decay','Medieval Times', '1980s Mall', 'Hell', 'Fragglerock', 'Television Sitcom', 'In the Present', '5 years from now', 'Waterworld'];
+			var systemArray = ['Education', 'Health', 'Geology', 'Military', 'Self Help', 'Advertising', 'Mass Entertainment', 'Extreme Luxury', 'Agricultural', 'Spectator Sports', 'Hobbies', 'Five Star Dining', 'Natural Births'];
+			var targetArray = ['Children','Pilgrims','Travelers', 'Old People', 'Farmers', 'Hipsters', 'New Parents', 'Women', 'Criminal', 'Hermit', 'Livestock', 'Megafauna', 'Trees', 'Companion Animals', 'Service Animals', 'Musicians', 'Celebrities'];
+			var moodArray = ['Uplifting', 'Erotic', 'Devastating', 'Destructive', 'Playful', 'Revolutionary', 'Secretive', 'Subtle', 'Improving', 'Degrading', 'Transformative', 'Humorous', 'Satirical', 'Prejudice'];
 			
 			var fontFamily = "20px Arial";
 			var fontFamilyLarge = "40px Arial";
@@ -257,32 +247,32 @@
 			}
 
 			var getTool = function(value){
-				var multiplier = value * toolArray.length;
-				return toolArray[Math.floor(multiplier)]
+				var multiplier = value * settingArray.length;
+				return settingArray[Math.floor(multiplier)]
 			}
 
 			var getMethod = function(value){
-				var multiplier = value * methodArray.length;
-				return methodArray[Math.floor(multiplier)];
+				var multiplier = value * systemArray.length;
+				return systemArray[Math.floor(multiplier)];
 			}
 
 			var getFuture = function(value){
-				var multiplier = value * futureArray.length;
-				return futureArray[Math.floor(multiplier)];
+				var multiplier = value * targetArray.length;
+				return targetArray[Math.floor(multiplier)];
 			}
 
 			var getPurpose = function(value){
-				var multiplier = value * purposeArray.length;
-				return purposeArray[Math.floor(multiplier)];
+				var multiplier = value * moodArray.length;
+				return moodArray[Math.floor(multiplier)];
 			}
 
 			var getTime = function(value){
-				var multiplier = value * purposeArray.length;
+				var multiplier = value * moodArray.length;
 				return timeArray[Math.floor(multiplier)];
 			}
 
 			var getSetting = function(value){
-				var multiplier = value * purposeArray.length;
+				var multiplier = value * moodArray.length;
 				return settingArray[Math.floor(multiplier)];
 			}
 
