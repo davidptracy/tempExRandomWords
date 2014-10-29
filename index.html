@@ -33,21 +33,15 @@
 			
 			var fontFamily = "20px Arial";
 			var fontFamilyLarge = "40px Arial";
-			var timeRemaining;
 
-			var eToolClicked = false;
-			var methodClicked = false;
-			var purposeClicked = false;
-			var futureClicked = false;
+			var settingClicked = false;
+			var systemClicked = false;
+			var targetClicked = false;
+			var moodClicked = false;
 
-			var timerActive = false;
-			var eToolFromServer = false;
-			var methodFromServer = false;
-			var futureFromServer = false;
+			var settingCanvas, systemCanvas, targetCanvas, moodCanvas;
 
-			var eToolCanvas, methodCanvas, futureCanvas, purposeCanvas, timeCanvas, settingCanvas, clockCanvas;
-
-			var eToolCtx, methodCtx, futureCtx, purposeCtx, timeCtx, settingCtx, clockCtx;
+			var settingCtx, systemCtx, targetCtx, moodCtx;
 
 			// ============================================================
 			// ===================== LOAD + EVENTS ========================
@@ -59,89 +53,89 @@
 
 				
 				// Canvas event listeners
-				eToolCanvas.addEventListener('click', function(){
+				settingCanvas.addEventListener('click', function(){
 
-					h=parseInt(document.getElementById("eToolCanvas").getAttribute("height"));
-					w=parseInt(document.getElementById("eToolCanvas").getAttribute("width"));
+					h=parseInt(document.getElementById("settingCanvas").getAttribute("height"));
+					w=parseInt(document.getElementById("settingCanvas").getAttribute("width"));
 
 						var selected = getTool(Math.random());
 
-						eToolClicked = true;
+						settingClicked = true;
 						console.log("Existing Tool Canvas has been Clicked!");
 						
-						eToolCtx.fillStyle = "white";
-			            eToolCtx.fillRect(0,0,w,h);
+						settingCtx.fillStyle = "white";
+			            settingCtx.fillRect(0,0,w,h);
 
-			            eToolCtx.font= fontFamily;
-			            eToolCtx.textAlign = 'center';
-			            eToolCtx.fillStyle = "black";
-			            eToolCtx.fillText(selected,w/2,h/2);
+			            settingCtx.font= fontFamily;
+			            settingCtx.textAlign = 'center';
+			            settingCtx.fillStyle = "black";
+			            settingCtx.fillText(selected,w/2,h/2);
 
 
 				});
 
-				methodCanvas.addEventListener('click', function(){
-					h=parseInt(document.getElementById("methodCanvas").getAttribute("height"));
-					w=parseInt(document.getElementById("methodCanvas").getAttribute("width"));
+				systemCanvas.addEventListener('click', function(){
+					h=parseInt(document.getElementById("systemCanvas").getAttribute("height"));
+					w=parseInt(document.getElementById("systemCanvas").getAttribute("width"));
 
 
 						var selected = getMethod(Math.random());
 
-						methodClicked = true;
+						systemClicked = true;
 						console.log("Method Canvas has been Clicked!");
 
-						methodCtx.fillStyle = "white";
-			            methodCtx.fillRect(0,0,w,h);
+						systemCtx.fillStyle = "white";
+			            systemCtx.fillRect(0,0,w,h);
 
-			            methodCtx.font= fontFamily;
-			            methodCtx.textAlign = 'center';
-			            methodCtx.fillStyle = "black";
-			            methodCtx.fillText(selected,w/2, h/2);
+			            systemCtx.font= fontFamily;
+			            systemCtx.textAlign = 'center';
+			            systemCtx.fillStyle = "black";
+			            systemCtx.fillText(selected,w/2, h/2);
 
 
 				});
 
-				futureCanvas.addEventListener('click', function(){
-					h=parseInt(document.getElementById("futureCanvas").getAttribute("height"));
-					w=parseInt(document.getElementById("futureCanvas").getAttribute("width"));
+				targetCanvas.addEventListener('click', function(){
+					h=parseInt(document.getElementById("targetCanvas").getAttribute("height"));
+					w=parseInt(document.getElementById("targetCanvas").getAttribute("width"));
 
 
 					
 
 						var selected = getFuture(Math.random());
 
-						futureClicked = true;
+						moodClicked = true;
 						console.log("Future Canvas has been Clicked!");
 
-						futureCtx.fillStyle = "white";
-			            futureCtx.fillRect(0,0,w,h);
+						targetCtx.fillStyle = "white";
+			            targetCtx.fillRect(0,0,w,h);
 
-			            futureCtx.font= fontFamily;
-			            futureCtx.textAlign = 'center';
-			            futureCtx.fillStyle = "black";
-			            futureCtx.fillText(selected,w/2, h/2);
+			            targetCtx.font= fontFamily;
+			            targetCtx.textAlign = 'center';
+			            targetCtx.fillStyle = "black";
+			            targetCtx.fillText(selected,w/2, h/2);
 						
 
 					// checkStatus();
 
 				});
 
-				purposeCanvas.addEventListener('click', function(){
-					h=parseInt(document.getElementById("purposeCanvas").getAttribute("height"));
-					w=parseInt(document.getElementById("purposeCanvas").getAttribute("width"));
+				moodCanvas.addEventListener('click', function(){
+					h=parseInt(document.getElementById("moodCanvas").getAttribute("height"));
+					w=parseInt(document.getElementById("moodCanvas").getAttribute("width"));
 
 						var selected = getPurpose(Math.random());
 
-						purposeClicked = true;
+						targetClicked = true;
 						console.log("Context Canvas has been Clicked!");
 
-						purposeCtx.fillStyle = "white";
-			            purposeCtx.fillRect(0,0,w,h);
+						moodCtx.fillStyle = "white";
+			            moodCtx.fillRect(0,0,w,h);
 
-			            purposeCtx.font= fontFamily;
-			            purposeCtx.textAlign = 'center';
-			            purposeCtx.fillStyle = "black";
-			            purposeCtx.fillText(selected,w/2, h/2);
+			            moodCtx.font= fontFamily;
+			            moodCtx.textAlign = 'center';
+			            moodCtx.fillStyle = "black";
+			            moodCtx.fillText(selected,w/2, h/2);
 					
 
 				});
@@ -154,93 +148,93 @@
 				//   SETUP INITIAL PROPERTIES OF THE CANVASES
 				// =============================================
 
-				eToolCanvas = document.getElementById('eToolCanvas');
-				eToolCtx = eToolCanvas.getContext('2d');
-				eToolCtx.fillStyle = "white";
-	            eToolCtx.fillRect(0,0,document.getElementById("eToolCanvas").getAttribute("width"),document.getElementById("eToolCanvas").getAttribute("height"));
+				settingCanvas = document.getElementById('settingCanvas');
+				settingCtx = settingCanvas.getContext('2d');
+				settingCtx.fillStyle = "white";
+	            settingCtx.fillRect(0,0,document.getElementById("settingCanvas").getAttribute("width"),document.getElementById("settingCanvas").getAttribute("height"));
 
-				methodCanvas = document.getElementById('methodCanvas');
-				methodCtx = methodCanvas.getContext('2d');
-				methodCtx.fillStyle = "white";
-	            methodCtx.fillRect(0,0,document.getElementById("methodCanvas").getAttribute("width"),document.getElementById("methodCanvas").getAttribute("height"));
+				systemCanvas = document.getElementById('systemCanvas');
+				systemCtx = systemCanvas.getContext('2d');
+				systemCtx.fillStyle = "white";
+	            systemCtx.fillRect(0,0,document.getElementById("systemCanvas").getAttribute("width"),document.getElementById("systemCanvas").getAttribute("height"));
 
-				futureCanvas = document.getElementById('futureCanvas');
-				futureCtx = futureCanvas.getContext('2d');
-				futureCtx.fillStyle = "white";
-	            futureCtx.fillRect(0,0,document.getElementById("futureCanvas").getAttribute("width"),document.getElementById("futureCanvas").getAttribute("height"));
+				targetCanvas = document.getElementById('targetCanvas');
+				targetCtx = targetCanvas.getContext('2d');
+				targetCtx.fillStyle = "white";
+	            targetCtx.fillRect(0,0,document.getElementById("targetCanvas").getAttribute("width"),document.getElementById("targetCanvas").getAttribute("height"));
 
-				purposeCanvas = document.getElementById('purposeCanvas');
-				purposeCtx = purposeCanvas.getContext('2d');
-				purposeCtx.fillStyle = "white";
-	            purposeCtx.fillRect(0,0,document.getElementById("purposeCanvas").getAttribute("width"),document.getElementById("purposeCanvas").getAttribute("height"));
+				moodCanvas = document.getElementById('moodCanvas');
+				moodCtx = moodCanvas.getContext('2d');
+				moodCtx.fillStyle = "white";
+	            moodCtx.fillRect(0,0,document.getElementById("moodCanvas").getAttribute("width"),document.getElementById("moodCanvas").getAttribute("height"));
 			}
 
 			var randomAll = function(value){
 
-				h=parseInt(document.getElementById("purposeCanvas").getAttribute("height"));
-				w=parseInt(document.getElementById("purposeCanvas").getAttribute("width"));
+				h=parseInt(document.getElementById("moodCanvas").getAttribute("height"));
+				w=parseInt(document.getElementById("moodCanvas").getAttribute("width"));
 
 				var selected = getPurpose(Math.random());
 
-				purposeClicked = true;
+				targetClicked = true;
 				console.log("Context Canvas has been Clicked!");
 
-				purposeCtx.fillStyle = "white";
-	            purposeCtx.fillRect(0,0,w,h);
+				moodCtx.fillStyle = "white";
+	            moodCtx.fillRect(0,0,w,h);
 
-	            purposeCtx.font= fontFamily;
-	            purposeCtx.textAlign = 'center';
-	            purposeCtx.fillStyle = "black";
-	            purposeCtx.fillText(selected,w/2, h/2);
+	            moodCtx.font= fontFamily;
+	            moodCtx.textAlign = 'center';
+	            moodCtx.fillStyle = "black";
+	            moodCtx.fillText(selected,w/2, h/2);
 
 
-	            h=parseInt(document.getElementById("futureCanvas").getAttribute("height"));
-				w=parseInt(document.getElementById("futureCanvas").getAttribute("width"));
+	            h=parseInt(document.getElementById("targetCanvas").getAttribute("height"));
+				w=parseInt(document.getElementById("targetCanvas").getAttribute("width"));
 
 				var selected = getFuture(Math.random());
 
-				futureClicked = true;
+				moodClicked = true;
 				console.log("Future Canvas has been Clicked!");
 
-				futureCtx.fillStyle = "white";
-	            futureCtx.fillRect(0,0,w,h);
+				targetCtx.fillStyle = "white";
+	            targetCtx.fillRect(0,0,w,h);
 
-	            futureCtx.font= fontFamily;
-	            futureCtx.textAlign = 'center';
-	            futureCtx.fillStyle = "black";
-	            futureCtx.fillText(selected,w/2, h/2);
+	            targetCtx.font= fontFamily;
+	            targetCtx.textAlign = 'center';
+	            targetCtx.fillStyle = "black";
+	            targetCtx.fillText(selected,w/2, h/2);
 
-	            h=parseInt(document.getElementById("methodCanvas").getAttribute("height"));
-				w=parseInt(document.getElementById("methodCanvas").getAttribute("width"));
+	            h=parseInt(document.getElementById("systemCanvas").getAttribute("height"));
+				w=parseInt(document.getElementById("systemCanvas").getAttribute("width"));
 
 				var selected = getMethod(Math.random());
 
-				methodClicked = true;
+				systemClicked = true;
 				console.log("Method Canvas has been Clicked!");
 
-				methodCtx.fillStyle = "white";
-	            methodCtx.fillRect(0,0,w,h);
+				systemCtx.fillStyle = "white";
+	            systemCtx.fillRect(0,0,w,h);
 
-	            methodCtx.font= fontFamily;
-	            methodCtx.textAlign = 'center';
-	            methodCtx.fillStyle = "black";
-	            methodCtx.fillText(selected,w/2, h/2);
+	            systemCtx.font= fontFamily;
+	            systemCtx.textAlign = 'center';
+	            systemCtx.fillStyle = "black";
+	            systemCtx.fillText(selected,w/2, h/2);
 
-	            h=parseInt(document.getElementById("eToolCanvas").getAttribute("height"));
-				w=parseInt(document.getElementById("eToolCanvas").getAttribute("width"));
+	            h=parseInt(document.getElementById("settingCanvas").getAttribute("height"));
+				w=parseInt(document.getElementById("settingCanvas").getAttribute("width"));
 
 				var selected = getTool(Math.random());
 
-				eToolClicked = true;
+				settingClicked = true;
 				console.log("Existing Tool Canvas has been Clicked!");
 				
-				eToolCtx.fillStyle = "white";
-	            eToolCtx.fillRect(0,0,w,h);
+				settingCtx.fillStyle = "white";
+	            settingCtx.fillRect(0,0,w,h);
 
-	            eToolCtx.font= fontFamily;
-	            eToolCtx.textAlign = 'center';
-	            eToolCtx.fillStyle = "black";
-	            eToolCtx.fillText(selected,w/2,h/2);
+	            settingCtx.font= fontFamily;
+	            settingCtx.textAlign = 'center';
+	            settingCtx.fillStyle = "black";
+	            settingCtx.fillText(selected,w/2,h/2);
 
 
 
@@ -292,25 +286,25 @@
 
 		<div class="gameColumn" align='center'>
 			<h2>SETTING</h2>	
-			<canvas id="eToolCanvas" width="300" height="300">
+			<canvas id="settingCanvas" width="300" height="300">
 			</canvas>		
 		</div>
 
 		<div class="gameColumn" align='center'>
 			<h2>SYSTEM</h2>
-			<canvas id="methodCanvas" width="300" height="300">
+			<canvas id="systemCanvas" width="300" height="300">
 			</canvas>
 		</div>
 
 		<div class="gameColumn" align='center'>
 			<h2>TARGET</h2>
-			<canvas id="futureCanvas" width="300" height="300">
+			<canvas id="targetCanvas" width="300" height="300">
 			</canvas>
 		</div>
 
 		<div class="gameColumn" align='center'>
 			<h2>MOOD</h2>
-			<canvas id="purposeCanvas" width="300" height="300">
+			<canvas id="moodCanvas" width="300" height="300">
 			</canvas>
 		</div>
 
